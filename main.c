@@ -2,8 +2,7 @@
 
 int main (int argc, char **argv) {
 	char **e;
-	if (argc < 2) {
-		ft_putstr(ERROR);
+	if (argc == 1) {
 		return 0;
 	}
 	e = split(argv[1]);
