@@ -1,4 +1,4 @@
-#include "stdlib.h"
+#include "ft_swap.h"
 
 
 int count(char *a) {
@@ -26,12 +26,12 @@ char *ft_make(char *r) {
     int i;
 
     i = 0;
-    if ((t = (char *)malloc(sizeof(char) * my_count(r) + 1)) == NULL) {
+    if ((t = (char *)malloc(sizeof(char) * my_count(r) + 1)) == NULL) 
         return NULL;
-    } 
     while (*r && *r != ' ') {
             t[i++] = *r++;
     }
+    t[i] = '\0';
     return t;
 }
 
@@ -40,9 +40,8 @@ char **split(char *a) {
     int i;
 
     i = 0;
-    if ((b = (char **)malloc(sizeof(char *) * count(a) + 1)) == NULL) {
+    if ((b = (char **)malloc(sizeof(char *) * count(a) + 1)) == NULL) 
         return NULL;
-    } 
     while (*a) {
         while(*a && *a == ' ')
             a++;
