@@ -6,6 +6,7 @@ SRC = 	main.c \
 		to_space.c \
 		pile.c \
 		build.c \
+		ft_int.c \
 		verif.c	
 
 O = $(SRC:.c=.o)

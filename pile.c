@@ -17,46 +17,51 @@ int ft_compare_int(int *r, int size) {
     return 1;
 }
 
-t_pile *make_a(int i) {
-    t_pile *a;
-       
-    if ((a = (t_pile *)malloc(sizeof(t_pile) *  (1))) == NULL) 
-        return NULL;
-    if ((a->pile = (int *)malloc(sizeof(int) *  (i * 2))) == NULL) 
-        return NULL;
-    a->max_size = i * 2;
-    a->index = 0;
-    a->size = i;
-    return a;
-}
+void ft_lstadd(t_pile **a, int b) {
+    t_pile *tmp;
+    t_pile *bb;
 
-void pilo(char **b, t_pile *a) {
-    int i;
-
-    i = 0;
-    while (b[i]) {
-        a->pile[i] = ft_atoi(b[i]);
-        i++;
+    bb = *a;
+    tmp = ft_lstnew(b);
+    if (*a == NULL) {
+        *a = tmp;
+        return;
     }
+    tmp->next = bb->next;
+    tmp->prev = bb;
+    bb->next = tmp;
 }
+
+t_pile	*ft_lstnew(int b) {
+    t_pile *a;
+
+    if (!(a = (t_pile *)malloc(sizeof(t_pile) *  1)))
+        return NULL;
+    a->i = b;
+    a->prev = a;
+    a->next = a;
+    return a;   
+} 
 
 t_piles  *new_piles(char **b) {
     t_piles *a;
-    t_pile *aa;
-    t_pile *bb;
+    int *e;
     int i;
 
-    i = count_array(b);
-    if ((a = (t_piles *)malloc(sizeof(t_piles) *  1)) == NULL) 
-        return NULL;
-    aa =  make_a( i);
-    pilo(b, aa);
-    if (!ft_compare_int(aa->pile, aa->size)) {
+    i = 0;
+    e = make_array_int(b);
+    if (!ft_compare_int(e, count_array(b))) {
         ft_putstr(ERROR);
         return NULL;
     }
-    bb = make_a( i);
-    a->a = aa; 
-    a->b = bb;
+    if (!(a = (t_piles *)malloc(sizeof(t_piles) *  1))) 
+        return NULL;
+    a->a = NULL;
+    a->b = NULL;
+    //a->a = ft_lstnew(e[i++]);  
+    ft_lstadd(&a->a, e[i++]);
+    while (e[i])
+        ft_lstadd(&a->a, e[i++]);
+    free(e);
     return a;
 }
