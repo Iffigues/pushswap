@@ -1,5 +1,22 @@
 #include "ft_swap.h"
 
+int ft_compare_int(int *r, int size) {
+    int i;
+    int a;
+
+    i = 0;
+    while (i < size) {
+        a = 0;
+        while (a < size) {
+            if (a != i && r[i] == r[a])
+                return 0;
+            a++;
+        }
+        i++;
+    }
+    return 1;
+}
+
 t_pile *make_a(int i) {
     t_pile *a;
        
@@ -34,6 +51,10 @@ t_piles  *new_piles(char **b) {
         return NULL;
     aa =  make_a( i);
     pilo(b, aa);
+    if (!ft_compare_int(aa->pile, aa->size)) {
+        ft_putstr(ERROR);
+        return NULL;
+    }
     bb = make_a( i);
     a->a = aa; 
     a->b = bb;

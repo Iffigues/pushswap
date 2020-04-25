@@ -2,6 +2,8 @@
 
 int main (int argc, char **argv) {
 	char **e;
+	t_piles *p;
+
 	if (argc == 1) {
 		return 0;
 	}
@@ -10,5 +12,8 @@ int main (int argc, char **argv) {
 		ft_putstr(ERROR);
 		return 0;
 	}
-	new_piles(e);
+	p =	new_piles(e);
+	if (p == NULL) {
+		return 0;
+	}
 }
