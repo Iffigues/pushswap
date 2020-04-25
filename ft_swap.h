@@ -9,6 +9,8 @@
 
 typedef struct s_pile {
     int *pile;
+    int max_size;
+    int size;
     int index;
 }   t_pile;
 
@@ -24,4 +26,6 @@ int verif_int(char **b);
 int verif(char *b);
 int count_array(char **b);
 void ft_putchar(char c);
+int ft_atoi(char *str);
+t_piles  *new_piles(char **b);
 #endif

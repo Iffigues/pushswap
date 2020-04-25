@@ -11,4 +11,5 @@ int main (int argc, char **argv) {
 		ft_putstr(ERROR);
 		return 0;
 	}
+	new_piles(e);
 }

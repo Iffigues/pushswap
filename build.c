@@ -1,3 +1,5 @@
+#include "ft_swap.h"
+
 int ft_atoi(char *str) {
 	int a;
 	int s;

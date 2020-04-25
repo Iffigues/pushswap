@@ -4,6 +4,8 @@ SRC = 	main.c \
 		print.c \
 		split.c \
 		to_space.c \
+		pile.c \
+		build.c \
 		verif.c	
 
 O = $(SRC:.c=.o)
