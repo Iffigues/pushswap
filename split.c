@@ -1,0 +1,56 @@
+#include "stdlib.h"
+
+
+int count(char *a) {
+    int i;
+
+    i = 0;
+    while (*a) 
+        if (*a++ != ' ' && (*a == ' ' || *a == '\0')) 
+            i++;
+    return i;
+}
+
+int my_count(char *b) {
+    int i;
+
+    i = 0;
+    while (b[i] && b[i] != ' ') {
+            i++;
+    }
+    return i;
+}
+
+char *ft_make(char *r) {
+    char *t;
+    int i;
+
+    i = 0;
+    if ((t = (char *)malloc(sizeof(char) * my_count(r) + 1)) == NULL) {
+        return NULL;
+    } 
+    while (*r && *r != ' ') {
+            t[i++] = *r++;
+    }
+    return t;
+}
+
+char **split(char *a) {
+    char **b;
+    int i;
+
+    i = 0;
+    if ((b = (char **)malloc(sizeof(char *) * count(a) + 1)) == NULL) {
+        return NULL;
+    } 
+    while (*a) {
+        while(*a && *a == ' ')
+            a++;
+        if (*a) 
+            b[i++] = ft_make(a);
+        while(*a && *a != ' ')
+            a++;
+    }
+    b[i] = NULL;
+    return b;
+}
