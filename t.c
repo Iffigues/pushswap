@@ -1,3 +1,3 @@
-int main() {
+int maine() {
 	printf("%d  %d\n",',' - '+',',' - '-');
 }
