@@ -5,12 +5,14 @@ SRC = 	main.c \
 		split.c \
 		to_space.c \
 		pile.c \
+		free.c \
+		sasb.c \
 		build.c \
 		ft_int.c \
 		verif.c	
 
 O = $(SRC:.c=.o)
-	CC = gcc -Wall -Wextra -Werror -g
+	CC = gcc -Wall -Wextra -Werror -g 
 
 all: $(NAME)
 

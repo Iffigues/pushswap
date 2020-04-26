@@ -26,7 +26,7 @@ char *ft_make(char *r) {
     int i;
 
     i = 0;
-    if ((t = (char *)malloc(sizeof(char) * my_count(r) + 1)) == NULL) 
+    if (!(t = (char *)malloc(sizeof(char) * my_count(r) + 1))) 
         return NULL;
     while (*r && *r != ' ') {
             t[i++] = *r++;
@@ -40,7 +40,8 @@ char **split(char *a) {
     int i;
 
     i = 0;
-    if ((b = (char **)malloc(sizeof(char *) * count(a) + 1)) == NULL) 
+    printf("%d\n",count(a));
+    if (!(b = (char **)malloc(sizeof(char *) * (count(a) + 1)))) 
         return NULL;
     while (*a) {
         while(*a && *a == ' ')
@@ -50,6 +51,7 @@ char **split(char *a) {
         while(*a && *a != ' ')
             a++;
     }
+    printf("%d\n",i);
     b[i] = NULL;
     return b;
 }

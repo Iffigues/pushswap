@@ -47,7 +47,9 @@ t_piles  *new_piles(char **b) {
     t_piles *a;
     int *e;
     int i;
+    int size;
 
+    size = count_array(b);
     i = 0;
     e = make_array_int(b);
     if (!ft_compare_int(e, count_array(b))) {
@@ -58,10 +60,9 @@ t_piles  *new_piles(char **b) {
         return NULL;
     a->a = NULL;
     a->b = NULL;
-    //a->a = ft_lstnew(e[i++]);  
-    ft_lstadd(&a->a, e[i++]);
-    while (e[i])
+    while (i < size)
         ft_lstadd(&a->a, e[i++]);
     free(e);
+    free_array(b);
     return a;
 }

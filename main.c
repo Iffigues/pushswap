@@ -12,6 +12,7 @@ int main (int argc, char **argv) {
 		ft_putstr(ERROR);
 		return 0;
 	}
+	
 	p =	new_piles(e);
 	if (p == NULL) {
 		return 0;
