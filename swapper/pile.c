@@ -44,6 +44,13 @@ t_pile	*ft_lstnew(int b) {
     return a;   
 } 
 
+void *free_both(char **b, int *a) {
+    free(a);
+    free_array(b);
+    return NULL;
+}
+
+
 t_piles  *new_piles(char **b) {
     t_piles *a;
     int *e;
@@ -53,17 +60,14 @@ t_piles  *new_piles(char **b) {
     size = count_array(b);
     i = 0;
     e = make_array_int(b);
-    if (!ft_compare_int(e, count_array(b))) {
-        ft_putstr(ERROR);
-        return NULL;
-    }
+    if (!ft_compare_int(e, count_array(b)))
+        return free_both(b, e);
     if (!(a = (t_piles *)malloc(sizeof(t_piles) *  1))) 
         return NULL;
     a->a = NULL;
     a->b = NULL;
     while (i < size)
         ft_lstadd(&a->a, e[i++]);
-    free(e);
-    free_array(b);
+    free_both(b, e);
     return a;
 }

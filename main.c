@@ -13,6 +13,10 @@ int main (int argc, char **argv) {
 		return 0;
 	}
 	p =	new_piles(e);
+	if (!p) {
+		ft_putstr(ERROR);
+		return 0;
+	}
 	pb(p);
 	pb(p);
 	pb(p);
