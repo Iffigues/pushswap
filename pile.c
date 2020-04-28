@@ -27,9 +27,10 @@ void ft_lstadd(t_pile **a, int b) {
         *a = tmp;
         return;
     }
-    tmp->next = bb->next;
-    tmp->prev = bb;
-    bb->next = tmp;
+    tmp->next = bb;
+    tmp->prev = bb->prev;
+    bb->prev->next = tmp;
+    bb->prev = tmp;
 }
 
 t_pile	*ft_lstnew(int b) {

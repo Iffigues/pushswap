@@ -18,6 +18,7 @@ typedef struct s_piles {
     t_pile  *b;
 }   t_piles;
 
+void free_pile(t_piles *a);
 void free_array(char **b);
 t_pile	*ft_lstnew(int b);
 void    ft_lstadd(t_pile **a, int b);
@@ -34,4 +35,7 @@ int *make_array_int (char **b);
 void sa(t_piles *a);
 void sb(t_piles *a);
 void ss(t_piles *a);
+void pa(t_piles *a);
+void pb(t_piles *b);
+
 #endif

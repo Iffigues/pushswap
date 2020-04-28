@@ -13,5 +13,5 @@ int *make_array_int (char **b) {
         g[c] = ft_atoi(b[c]);
         c++;
     }
-    return g;
+  return g;
 }

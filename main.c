@@ -12,9 +12,14 @@ int main (int argc, char **argv) {
 		ft_putstr(ERROR);
 		return 0;
 	}
-	
 	p =	new_piles(e);
+	pb(p);
+	pb(p);
+	pb(p);
+	pb(p);
+	pb(p);
 	if (p == NULL) {
 		return 0;
 	}
+	free_pile(p);
 }

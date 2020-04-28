@@ -7,13 +7,13 @@ SRC = 	main.c \
 		pile.c \
 		free.c \
 		sasb.c \
+		papb.c \
 		build.c \
 		ft_int.c \
 		verif.c	
 
 O = $(SRC:.c=.o)
-	CC = gcc -Wall -Wextra -Werror -g 
-
+	CC = gcc -Wall -Wextra -Werror -g -fsanitize=address
 all: $(NAME)
 
 $(NAME): $(O)
