@@ -1,23 +1,23 @@
 NAME = push_swap
 
 SRC = 	main.c \
-		print.c \
-		split.c \
-		to_space.c \
-		pile.c \
-		free.c \
-		sasb.c \
-		papb.c \
-		build.c \
-		ft_int.c \
-		verif.c	
+		./swapper/print.c \
+		./swapper/split.c \
+		./swapper/to_space.c \
+		./swapper/pile.c \
+		./swapper/free.c \
+		./swapper/sasb.c \
+		./swapper/papb.c \
+		./swapper/build.c \
+		./swapper/ft_int.c \
+		./swapper/verif.c	
 
 O = $(SRC:.c=.o)
 	CC = gcc -Wall -Wextra -Werror -g -fsanitize=address
 all: $(NAME)
 
 $(NAME): $(O)
-		$(CC) -o $@ $(O)
+		$(CC) -o $@ *.o
 
 %.o: %.c
 		$(CC) -c $<
