@@ -40,7 +40,6 @@ char **split(char *a) {
     int i;
 
     i = 0;
-    printf("%d\n",count(a));
     if (!(b = (char **)malloc(sizeof(char *) * (count(a) + 1)))) 
         return NULL;
     while (*a) {
@@ -51,7 +50,7 @@ char **split(char *a) {
         while(*a && *a != ' ')
             a++;
     }
-    printf("%d\n",i);
+  
     b[i] = NULL;
     return b;
 }

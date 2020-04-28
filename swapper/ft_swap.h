@@ -1,6 +1,5 @@
 #ifndef FT_SWAP_H
 # define FT_SWAP_H
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # define ERROR "Error\n"
