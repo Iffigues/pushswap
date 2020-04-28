@@ -27,8 +27,9 @@ void ft_count_list(t_pile *a) {
     free(tmp);
 }
 
-void free_pile(t_piles *a) {
+int free_pile(t_piles *a) {
     ft_count_list(a->a);
     ft_count_list(a->b);
     free(a);
+    return 0;
 }
