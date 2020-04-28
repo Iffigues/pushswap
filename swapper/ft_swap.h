@@ -17,6 +17,7 @@ typedef struct s_piles {
     t_pile  *b;
 }   t_piles;
 
+int errors();
 void free_pile(t_piles *a);
 void free_array(char **b);
 t_pile	*ft_lstnew(int b);
@@ -36,5 +37,6 @@ void sb(t_piles *a);
 void ss(t_piles *a);
 void pa(t_piles *a);
 void pb(t_piles *b);
+int start(t_piles *a);
 
 #endif

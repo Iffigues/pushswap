@@ -8,22 +8,10 @@ int main (int argc, char **argv) {
 		return 0;
 	}
 	e = split(argv[1]);
-	if (!verif_int(e)) {
-		ft_putstr(ERROR);
-		return 0;
-	}
+	if (!verif_int(e))
+		return errors();
 	p =	new_piles(e);
-	if (!p) {
-		ft_putstr(ERROR);
-		return 0;
-	}
-	pb(p);
-	pb(p);
-	pb(p);
-	pb(p);
-	pb(p);
-	if (p == NULL) {
-		return 0;
-	}
-	free_pile(p);
+	if (!p)
+		return errors();
+	return start(p);
 }
