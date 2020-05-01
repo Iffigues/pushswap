@@ -61,6 +61,8 @@ int count_list(t_pile *a)
     return i;
 }
 
+
+
 int start(t_piles *a)
 {
     return free_pile(a);

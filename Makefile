@@ -7,6 +7,7 @@ SRC = 	main.c \
 		./swapper/split.c \
 		./swapper/to_space.c \
 		./swapper/pile.c \
+		./swapper/finish.c \
 		./swapper/free.c \
 		./swapper/sasb.c \
 		./swapper/papb.c \

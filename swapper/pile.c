@@ -17,12 +17,12 @@ int ft_compare_int(int *r, int size) {
     return 1;
 }
 
-void ft_lstadd(t_pile **a, int b) {
+void ft_lstadd(t_pile **a, int b, int c) {
     t_pile *tmp;
     t_pile *bb;
 
     bb = *a;
-    tmp = ft_lstnew(b);
+    tmp = ft_lstnew(b, c);
     if (*a == NULL) {
         *a = tmp;
         return;
@@ -33,12 +33,13 @@ void ft_lstadd(t_pile **a, int b) {
     bb->prev = tmp;
 }
 
-t_pile	*ft_lstnew(int b) {
+t_pile	*ft_lstnew(int b, int t) {
     t_pile *a;
 
     if (!(a = (t_pile *)malloc(sizeof(t_pile) *  1)))
         return NULL;
     a->i = b;
+    a->nb = t;
     a->prev = a;
     a->next = a;
     return a;   
@@ -67,7 +68,7 @@ t_piles  *new_piles(char **b) {
     a->a = NULL;
     a->b = NULL;
     while (i < size)
-        ft_lstadd(&a->a, e[i++]);
+        ft_lstadd(&a->a, e[i++], a->nb);
     free_both(b, e);
     return a;
 }
