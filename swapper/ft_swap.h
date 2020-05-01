@@ -20,6 +20,7 @@ typedef struct s_piles {
     int nb;
 }   t_piles;
 
+void ra(t_piles *a);
 int count_list(t_pile *a);
 int get_pivot(t_pile *a);
 int errors();

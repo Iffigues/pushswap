@@ -1,6 +1,7 @@
 NAME = push_swap
 
 SRC = 	main.c \
+		./swapper/rarb.c \
 		./swapper/start.c \
 		./swapper/print.c \
 		./swapper/error.c \
