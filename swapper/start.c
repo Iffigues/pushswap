@@ -66,17 +66,11 @@ void start_a(t_piles *a) {
     int i;
 
     i = count_list(a->a);
-    while((i = count_list(a->a)) > 1) {
-        if (is_tried(a->a)) {
-            while(a->a->i != get_max(a->a))
-                ra(a);
-            return;
-        }
-        printf("oui\n");
+    while((i = count_list(a->a)) > 3) {
         a->nb++;
         p = get_pivot(a->a);
         while(i > 0) {
-            if (a->a->i >= p)
+            if (a->a->i < p)
                 pa(a);
             else
                 ra(a);
@@ -88,6 +82,11 @@ void start_a(t_piles *a) {
 
 int start(t_piles *a)
 {
+
     start_a(a);
+    while(a->a){
+        printf("%dd\n",a->a->i);
+        a->a = a->a->next;
+    }
     return free_pile(a);
 }

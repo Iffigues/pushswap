@@ -7,7 +7,7 @@ int count_div(t_pile *a) {
 
     b = 0;
     aa = 0;
-    if (!(count_list(a) & 1))
+    if (!(count_list(a) & 1)) 
         b++;
     tmp = a->next;
     while (tmp != a) {
@@ -17,6 +17,7 @@ int count_div(t_pile *a) {
             b++;
         tmp = tmp->next;
     }
+    
     return aa == b;
 }
 
@@ -24,8 +25,9 @@ int get_pivot(t_pile *a) {
     t_pile *tmp;
     tmp = a;
 
+    tmp = tmp->next;
     if (count_list(a) > 2) 
-        while (tmp->next != a) {
+        while (tmp != a) {
             if (count_div(tmp))
                 return tmp->i;
             tmp = tmp->next;
