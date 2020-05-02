@@ -32,6 +32,8 @@ int get_pivot(t_pile *a) {
                 return tmp->i;
             tmp = tmp->next;
      }
+     if (count_div(tmp))
+                return tmp->i;
     return 0;
 }
 
@@ -48,6 +50,28 @@ int is_tried(t_pile *a) {
     tmps = tmp->next;
     while (tmps != tmp) {
         if (tmps->i < i)
+            return 0;
+        i = tmps->i;
+        tmps = tmps->next;
+    }
+    return 1;
+}
+
+
+
+int is_rev_tried(t_pile *a) {
+    t_pile *tmp;
+    t_pile *tmps;
+    int i;
+
+    i = get_min(a);
+    tmp = a;
+    while (tmp->i != i){
+        tmp = tmp->next;
+    }
+    tmps = tmp->next;
+    while (tmps != tmp) {
+        if (tmps->i > i)
             return 0;
         i = tmps->i;
         tmps = tmps->next;

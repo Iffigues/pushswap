@@ -20,6 +20,8 @@ typedef struct s_piles {
     int nb;
 }   t_piles;
 
+void step_trois(t_piles *a);
+int is_rev_tried(t_pile *a);
 void ra(t_piles *a);
 int count_list(t_pile *a);
 int get_pivot(t_pile *a);
@@ -43,10 +45,13 @@ void sb(t_piles *a);
 void ss(t_piles *a);
 void pa(t_piles *a);
 void pb(t_piles *b);
+void rra(t_piles *b);
+void rrb(t_piles *b);
+void rrr(t_piles *b);
 int start(t_piles *a);
 int is_tried(t_pile *a);
 int get_min(t_pile *a);
 int get_max(t_pile *a);
-
+void go_min(t_piles *a);
 
 #endif

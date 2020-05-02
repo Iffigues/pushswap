@@ -7,7 +7,7 @@ int is_one(t_pile *s) {
     return 0;
 }
 
-void pa(t_piles *a) {
+void pb(t_piles *a) {
     int i;
     t_pile *e;
     int y;
@@ -22,12 +22,13 @@ void pa(t_piles *a) {
         a->a->prev =  a->a->prev->prev;
         free(e);
         ft_lstadd(&a->b,i, a->nb);
+        a->b = a->b->prev;
         if (y) 
             a->a = NULL;
     }
 }
 
-void pb(t_piles *a) {
+void pa(t_piles *a) {
     int i;
     t_pile *e;
     int y;
@@ -42,6 +43,7 @@ void pb(t_piles *a) {
         a->b->prev =  a->b->prev->prev;
         free(e);
         ft_lstadd(&a->a,i, a->nb);
+        a->a = a->a->prev;
         if (y) 
             a->b = NULL;
     }
