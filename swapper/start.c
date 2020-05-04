@@ -85,8 +85,7 @@ void start_a(t_piles *a) {
 
 int start(t_piles *a)
 {
-    start_a(a);
-    printf("%d\n",a->b->i);
+   
     if (count_list(a->a) ==  2) {
         if (!is_tried(a->a)){
             if (a->b->i < a->b->next->i)
@@ -101,8 +100,9 @@ int start(t_piles *a)
     go_min(a);
     while (a->b) {
         printf("%d\n",a->b->i);
-        break;
         a->b = a->b->next;
     }
+            printf("%d\n",a->a->i);
+
     return free_pile(a);
 }

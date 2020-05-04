@@ -26,6 +26,8 @@ void ra(t_piles *a);
 int count_list(t_pile *a);
 int get_pivot(t_pile *a);
 int errors();
+void rb(t_piles *a);
+void rr(t_piles *a);
 int free_pile(t_piles *a);
 void free_array(char **b);
 t_pile	*ft_lstnew(int b, int t);
