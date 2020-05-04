@@ -4,13 +4,13 @@ void step_trois(t_piles *a) {
 
     while (!is_tried(a->a)) {
         if (a->a->i > a->a->next->i && a->b->i < a->b->next->i) {
-            ss(a);
+            grap(a, "ss", ss);
         }
         else if (a->a->i > a->a->next->i) {
-            sa(a);
+            grap(a, "sa", sa);
         }
         else {
-            ra(a);
+            grap(a, "ra", ra);
         }
     }
 }
@@ -27,7 +27,7 @@ void go_min(t_piles *a) {
         y++;
         tmp = tmp->next;
     }
-     tmp = a->a;
+    tmp = a->a;
     while (get_min(a->a) != tmp->i) {
         u++;
         tmp = tmp->prev;
@@ -35,8 +35,8 @@ void go_min(t_piles *a) {
     while (get_min(a->a) != a->a->i)
     {
         if (y >= u)
-            rra(a);
+            grap(a, "rra",rra);
         else
-            ra(a);
+            grap(a, "ra", ra);
     }
 }

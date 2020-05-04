@@ -18,8 +18,14 @@ typedef struct s_piles {
     t_pile *a;
     t_pile  *b;
     int nb;
+    int size;
+    int count;
 }   t_piles;
 
+int get_sens(t_pile *a, int p, int i);
+int make_end(t_piles *a);
+int start_all(t_piles *a);
+void grap(t_piles *a, char *b,  void (*pf)(t_piles *));
 void step_trois(t_piles *a);
 int is_rev_tried(t_pile *a);
 void ra(t_piles *a);
@@ -37,6 +43,8 @@ int ft_strlen(char *b);
 void ft_putstr(char *b);
 int verif_int(char **b);
 int verif(char *b);
+void rb(t_piles *a);
+void rr(t_piles *a);
 int count_array(char **b);
 void ft_putchar(char c);
 int ft_atoi(char *str);
