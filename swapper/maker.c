@@ -186,7 +186,7 @@ void f3(t_piles *a, int i) {
     p = get_b_pivot(a->a, i);   
     a->nb++;
     while (count_nb(a->a, i) > 2) {
-            printf("count = %d\n", count_nb(a->a, i));
+            printf("count = %d\n", is_tried(a->a));
             if (!have_rev_pivot(a->a, p, i)){
                 p = get_b_pivot(a->a, i);   
                 a->nb++; 
