@@ -186,7 +186,7 @@ void f3(t_piles *a, int i) {
     p = get_b_pivot(a->a, i);   
     a->nb++;
     while (count_nb(a->a, i) > 2) {
-            printf("count = %d\n", is_tried(a->a));
+            printf("count = %d\n", a->a->i);
             if (!have_rev_pivot(a->a, p, i)){
                 p = get_b_pivot(a->a, i);   
                 a->nb++; 
@@ -195,8 +195,12 @@ void f3(t_piles *a, int i) {
                 grap(a, "pb", pb);
             if (get_sens(a->a, p, i))
                     grap(a,"rra", rra);
-            } else if (!get_sens(a->a, p, i)) {
+
+            } 
+            if (get_sens(a->a, p, i)) {
                 grap(a, "ra", ra);
+            } else {
+                grap(a,"rra", rra);
             }
     } 
     while (a->a->prev->i != get_max(a->a))
@@ -262,18 +266,28 @@ int ender(t_piles *a) {
     return 1;
 }
 
+void tri(t_piles *a) {
+    while (a->a->fixe == 0) {
+        if (a->a->i > a->a->next->i)
+            grap(a, "sa", sa);
+        else
+        grap(a, "ra", ra);
+    }
+    while (a->a->fixe == 0) {
+        if (a->a->i > a->a->next->i)
+            grap(a, "sa", sa);
+        else
+        grap(a, "rra", rra);
+    }
+}
+
 int start_all (t_piles *a) {
-    //int i;
-
-    /*while (a->b) {
-        printf("%d\n", a->b->nb);
-        a->b = a->b->next;
-    }*/
-                printf("i endouille %d\n",count_nb(a->b, a->b->nb));
-
+    //fixed(a->a);
+    printf("%d \n",a->b->i);
     while (a->b) {
-        
         if (a->b->nb == 1) {
+            tri(a);
+                    printf("%d %d\n", a->count, is_tried(a->a));
             exit(0);
         }
         if (count_nb(a->b, a->b->nb) > 3) {
@@ -281,7 +295,7 @@ int start_all (t_piles *a) {
 
             ender(a);
         } else {
-            printf("endouilleron %d \n", a->b->nb);
+            printf("endouilleron %d \n", a->count);
             go_max(a);
             grap(a, "pa", pa);
         }

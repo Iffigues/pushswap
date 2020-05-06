@@ -10,6 +10,7 @@
 typedef struct s_pile {
     int i;
     int nb;
+    int fixe;
     struct s_pile  *next;
     struct s_pile *prev;
 }   t_pile;
@@ -22,6 +23,7 @@ typedef struct s_piles {
     int count;
 }   t_piles;
 
+void fixed(t_pile *a);
 int get_sens(t_pile *a, int p, int i);
 int make_end(t_piles *a);
 int start_all(t_piles *a);
