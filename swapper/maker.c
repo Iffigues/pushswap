@@ -193,9 +193,9 @@ void f3(t_piles *a, int i) {
             }
             if (a->a->i <=  p) {
                 grap(a, "pb", pb);
-            if (a->a->nb != i)
+            if (get_sens(a->a, p, i))
                     grap(a,"rra", rra);
-            } else if (get_sens(a->a, p, i)) {
+            } else if (!get_sens(a->a, p, i)) {
                 grap(a, "ra", ra);
             }
     } 
