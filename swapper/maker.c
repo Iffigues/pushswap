@@ -186,28 +186,22 @@ void f3(t_piles *a, int i) {
     p = get_b_pivot(a->a, i);   
     a->nb++;
     while (count_nb(a->a, i) > 2) {
-            printf("count = %d\n", a->a->i);
+            if (a->a->i ==481)
+                exit(0);
             if (!have_rev_pivot(a->a, p, i)){
                 p = get_b_pivot(a->a, i);   
                 a->nb++; 
             }
-            if (a->a->i <=  p) {
+            if (a->a->i <=  p) 
                 grap(a, "pb", pb);
-            if (get_sens(a->a, p, i))
-                    grap(a,"rra", rra);
-
-            } 
             if (get_sens(a->a, p, i)) {
                 grap(a, "ra", ra);
             } else {
                 grap(a,"rra", rra);
             }
     } 
-    while (a->a->prev->i != get_max(a->a))
+    while (a->a->prev->fixe != 1 )
         grap(a,"rra", rra);
-    if (a->a->next->i > a->a->i)
-        grap(a, "sa", sa);
-        printf("is s %d  %d %d %d %d %d\n",count_nb(a->a, i), a->a->prev->nb, a->a->nb, a->a->next->nb, a->a->next->nb, a->a->next->next->nb);
 
 }
 
@@ -215,6 +209,8 @@ int get_sens(t_pile *a, int p, int i) {
     t_pile *tmp;
 
     tmp = a;
+    if (tmp->i != i)
+        return 0;
     while (tmp->nb == i) {
         if (tmp->i <= p)
             return 1;
@@ -241,28 +237,21 @@ int ender(t_piles *a) {
      
     b = a->b->nb;
    p = get_b_pivot(a->b, b);
-    printf("aaa= %d\n", a->b->nb); 
-    if (a->b->nb == 1) {
-        printf("zz = %d\n",a->a->i);
-        printf("%d %d\n", a->count, is_tried(a->a));
-        exit(0);
-    }
-    if (is_b_tried(a->b, b)) {
-        while (a->b->nb == b)
-            grap(a,"pa", pa);
-        return 1;
-    }
-
-
+   a->nb++;
+    if (count_nb(a->b, a->b->nb) > 3) {
     while (count_nb(a->b, b) > 2 && have_pivot(a->b, p)){
-        printf("non\n");
         if (a->b->i >=  p) 
             grap(a, "pa", pa);
         else 
             grap(a, "rb", rb);     
     }
     go_max(a);
-    f3(a, b);
+        f3(a, b);
+
+    } else {
+         go_max(a);
+            grap(a, "pa", pa);
+    }
     return 1;
 }
 
@@ -272,32 +261,41 @@ void tri(t_piles *a) {
             grap(a, "sa", sa);
         else
         grap(a, "ra", ra);
+        ///printf("%d\n", a->a->i);
     }
+    if (a->a->fixe == 1)
+    grap(a, "rra", rra);
     while (a->a->fixe == 0) {
+    
         if (a->a->i > a->a->next->i)
             grap(a, "sa", sa);
         else
         grap(a, "rra", rra);
+           //     printf("%d\n", a->a->i);
+        
     }
+    grap(a, "ra", ra);
 }
 
 int start_all (t_piles *a) {
-    //fixed(a->a);
-    printf("%d \n",a->b->i);
+    fixed(a->a);
+    printf("%d\n",3);
+                printf("%d %d\n", a->a->i, a->a->fixe);
+
     while (a->b) {
         if (a->b->nb == 1) {
+           // printf("%d %d\n", a->a->prev->fixe, a->a->fixe);
             tri(a);
-                    printf("%d %d\n", a->count, is_tried(a->a));
+           
+        t_pile *tms = a->a->next;
+            while (tms != a->a) {
+                    printf("%d %d %d\n", tms->i, tms->nb, tms->nb);
+                    tms = tms->next;
+            }
+            printf("%d tired = %d\n", a->count, is_tried(a->a));
             exit(0);
-        }
-        if (count_nb(a->b, a->b->nb) > 3) {
-                        printf("endouillette\n");
-
-            ender(a);
         } else {
-            printf("endouilleron %d \n", a->count);
-            go_max(a);
-            grap(a, "pa", pa);
+            ender(a);
         }
     }
    

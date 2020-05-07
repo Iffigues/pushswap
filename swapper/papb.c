@@ -32,12 +32,10 @@ void pa(t_piles *a) {
     int i;
     t_pile *e;
     int y;
-    int h;
 
 
     if (a->b != NULL) 
     {
-        h = a->b->nb;
         y = is_one(a->b);
         i = a->b->i;
         e = a->b;
@@ -45,7 +43,7 @@ void pa(t_piles *a) {
         a->b->prev->prev->next =  a->b;
         a->b->prev =  a->b->prev->prev;
         free(e);
-        ft_lstadd(&a->a,i, h);
+        ft_lstadd(&a->a,i, a->nb);
         a->a = a->a->prev;
         if (y) 
             a->b = NULL;

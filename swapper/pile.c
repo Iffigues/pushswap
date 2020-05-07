@@ -45,7 +45,7 @@ t_pile	*ft_lstnew(int b, int t)
     if (!(a = (t_pile *)malloc(sizeof(t_pile) *  1)))
         return NULL;
     a->i = b;
-    a->i = 0;
+    a->fixe = 0;
     a->nb = t;
     a->prev = a;
     a->next = a;

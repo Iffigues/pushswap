@@ -89,9 +89,7 @@ int start(t_piles *a)
     a->count = 0;
     a->nb= 0;
     a->size= count_list(a->a);
-
     start_a(a);
-
     if (count_list(a->a) ==  2) {
         if (!is_tried(a->a)){
             if (a->b->i < a->b->next->i)
@@ -100,9 +98,8 @@ int start(t_piles *a)
                 grap(a,"sa",sa);
         }
     }
-    if (count_list(a->a) == 3) {
+    if (count_list(a->a) == 3)
         step_trois(a);
-    }
     go_min(a);
     start_all(a);
     printf("%d\n %d\n %d\n", a->a->i, a->count, is_tried(a->a));
