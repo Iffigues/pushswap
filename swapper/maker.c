@@ -15,6 +15,7 @@ void go_go(t_piles *a, char b, int c) {
 void go_max(t_piles *a) {
     while (a->b->prev->nb != 1) 
         grap(a, "rrb", rrb);
+    //printf("%d\n",a->b->nb);
 }
 
 int getg(t_pile *a) {
@@ -27,10 +28,10 @@ int getg(t_pile *a) {
     tmp = a;
     while (tmp->prev->nb == i) {
     tmp = tmp->prev;
-    printf("eeeoooood=%d\n",tmp->i);
+    //printf("eeeoooood=%d\n",tmp->i);
     }
     while (tmp->nb == i) {
-        printf("eeeoooood=%d",tmp->i);
+       // printf("eeeoooood=%d",tmp->i);
         if (y > tmp->i)
             y = tmp->i;
         tmp = tmp->next;
@@ -155,25 +156,17 @@ int get_b_pivot(t_pile *a, int t) {
 
 int have_rev_pivot(t_pile *a, int y, int i) {
     t_pile *tmp;
+    int yy = count_nb(a, i);
 
-    tmp = a->next;
-     printf("pivot = %d\n", y);
-    if (a->i <= y) {
-        printf("eeeoooood=%d",tmp->i);
-
-        return 1;
-    }
-    printf("pivot = %d\n", y);
+    tmp = a;
     while (tmp->prev->nb == i)
         tmp = tmp->prev;
-     while (tmp->nb == i) {
+     while (yy--) {
         if (tmp->i <= y) {
-            printf("eeed=%d",tmp->i);
             return 1;
         }
         tmp =  tmp->next;
     }
-    printf("ddf = %d\n",a->nb);
     return 0;
 }
 
@@ -181,20 +174,16 @@ void f3(t_piles *a, int i) {
     int p;
     p = 0;
 
-    if (is_tried(a->a)) 
-        return;
     p = get_b_pivot(a->a, i);   
     a->nb++;
     while (count_nb(a->a, i) > 2) {
-            if (a->a->i ==481)
-                exit(0);
             if (!have_rev_pivot(a->a, p, i)){
                 p = get_b_pivot(a->a, i);   
                 a->nb++; 
             }
             if (a->a->i <=  p) 
                 grap(a, "pb", pb);
-            if (get_sens(a->a, p, i)) {
+            else if (get_sens(a->a, p, i)) {
                 grap(a, "ra", ra);
             } else {
                 grap(a,"rra", rra);
@@ -209,8 +198,14 @@ int get_sens(t_pile *a, int p, int i) {
     t_pile *tmp;
 
     tmp = a;
-    if (tmp->i != i)
-        return 0;
+    printf("merdouille\n");
+    if (tmp->nb  != i) {
+        if (a->next->nb == i)
+            return 1;
+        else
+            return 0;
+    }
+    printf("merdasse\n");
     while (tmp->nb == i) {
         if (tmp->i <= p)
             return 1;
@@ -234,20 +229,21 @@ int is_b_tried(t_pile *a, int i) {
 int ender(t_piles *a) {
     int b;
     int p;
-     
-    b = a->b->nb;
-   p = get_b_pivot(a->b, b);
-   a->nb++;
-    if (count_nb(a->b, a->b->nb) > 3) {
-    while (count_nb(a->b, b) > 2 && have_pivot(a->b, p)){
-        if (a->b->i >=  p) 
-            grap(a, "pa", pa);
-        else 
-            grap(a, "rb", rb);     
-    }
-    go_max(a);
-        f3(a, b);
 
+    a->nb++;
+    b = a->b->nb;
+    p = get_b_pivot(a->b, b);
+    //("%d\n", count_nb(a->b, a->b->nb));
+    if (count_nb(a->b, a->b->nb) > 3) {
+        while (count_nb(a->b, b) > 2 && have_pivot(a->b, p)){
+            if (a->b->i >=  p) 
+                grap(a, "pa", pa);
+            else 
+                grap(a, "rb", rb);     
+        }
+        go_max(a);
+        //printf("prev = %d\n", a->b->prev->nb );
+        f3(a, a->nb);
     } else {
          go_max(a);
             grap(a, "pa", pa);
@@ -279,9 +275,7 @@ void tri(t_piles *a) {
 
 int start_all (t_piles *a) {
     fixed(a->a);
-    printf("%d\n",3);
-                printf("%d %d\n", a->a->i, a->a->fixe);
-
+   
     while (a->b) {
         if (a->b->nb == 1) {
            // printf("%d %d\n", a->a->prev->fixe, a->a->fixe);
@@ -289,12 +283,13 @@ int start_all (t_piles *a) {
            
         t_pile *tms = a->a->next;
             while (tms != a->a) {
-                    printf("%d %d %d\n", tms->i, tms->nb, tms->nb);
+                   //printf("%d %d %d\n", tms->i, tms->nb, tms->nb);
                     tms = tms->next;
             }
             printf("%d tired = %d\n", a->count, is_tried(a->a));
             exit(0);
         } else {
+            //printf("aa\n");
             ender(a);
         }
     }
