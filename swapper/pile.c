@@ -46,6 +46,7 @@ t_pile	*ft_lstnew(int b, int t)
         return NULL;
     a->i = b;
     a->fixe = 0;
+    a->y = 0;
     a->nb = t;
     a->prev = a;
     a->next = a;

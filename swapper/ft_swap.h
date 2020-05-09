@@ -11,6 +11,7 @@ typedef struct s_pile {
     int i;
     int nb;
     int fixe;
+    int y;
     struct s_pile  *next;
     struct s_pile *prev;
 }   t_pile;
@@ -65,5 +66,8 @@ int is_tried(t_pile *a);
 int get_min(t_pile *a);
 int get_max(t_pile *a);
 void go_min(t_piles *a);
-
+int make_one(t_piles *a);
+void f3(t_piles *a, int i);
+int ender(t_piles *a);
+void tri(t_piles *a);
 #endif

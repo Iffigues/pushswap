@@ -2,6 +2,7 @@ NAME = push_swap
 
 SRC = 	main.c \
 		./swapper/grab.c \
+		./swapper/one.c \
 		./swapper/fixed.c \
 		./swapper/maker.c \
 		./swapper/step.c \
